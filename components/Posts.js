@@ -2,7 +2,7 @@ import Post from './Post'
 
 const posts = [
   {
-    id: '123',
+    userId: 123,
     username: 'phuhuwnglee',
     userImg:
       'https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.6435-9/123584179_1449709761900168_1445279572392526145_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Wo95pKXMSawAX-hm7Rk&_nc_ht=scontent.fsgn5-3.fna&oh=00_AT9XUHxdPilbzyshjiWj853rHCcyA3pRI5snhY544OGypg&oe=62E1461F',
@@ -11,7 +11,7 @@ const posts = [
     caption: 'My love',
   },
   {
-    id: '124',
+    userId: 124,
     username: 'phuhuwnglee',
     userImg:
       'https://scontent.fsgn5-3.fna.fbcdn.net/v/t1.6435-9/123584179_1449709761900168_1445279572392526145_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Wo95pKXMSawAX-hm7Rk&_nc_ht=scontent.fsgn5-3.fna&oh=00_AT9XUHxdPilbzyshjiWj853rHCcyA3pRI5snhY544OGypg&oe=62E1461F',
@@ -24,16 +24,15 @@ const posts = [
 function Posts() {
   return (
     <div>
-      {posts.map((post) => {
+      {/* {posts.map((post) => {
         <Post
-          key={post.id}
-          id={post.id}
+          key={post.userId}
           username={post.username}
           userImg={post.userImg}
           img={post.img}
-          caption={post.caption}
-        />
-      })}
+          caption={post.caption}/>
+      })} */}
+          <Post />
     </div>
   )
 }

@@ -7,7 +7,7 @@ import {
   PaperAirplaneIcon,
 } from '@heroicons/react/outline'
 
-function Post({ id, username, userImg, img, caption }) {
+function Post({ username, userImg, img, caption }) {
   return (
     <div className="bg-white my-7 border rounded-sm">
       Post
@@ -44,9 +44,9 @@ function Post({ id, username, userImg, img, caption }) {
         <input
           type="text"
           className="border-none flex-1 outline-none"
-          placeholder="Nhap binh luan..."
+          placeholder="Nhập bình luận..."
         />
-        <button className="font-semibold text-blue-400">Dang</button>
+        <button className="font-semibold text-blue-400">Đăng bình luận</button>
       </form>
     </div>
   )
