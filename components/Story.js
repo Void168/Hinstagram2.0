@@ -1,4 +1,4 @@
-function Story({ avatar, username, email }) {
+function Story({ avatar, username }) {
   return (
     <div>
       <img
@@ -6,7 +6,7 @@ function Story({ avatar, username, email }) {
         src={avatar}
         alt=""
       />
-      <p className="text-xs w-14 truncate text-center"> {username}</p>{' '}
+      <p className="text-xs w-14 truncate text-center">{username}</p>
     </div>
   )
 }

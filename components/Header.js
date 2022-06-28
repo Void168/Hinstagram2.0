@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image'
 import {
   SearchIcon,
   PlusCircleIcon,
@@ -7,14 +7,22 @@ import {
   PaperAirplaneIcon,
   MenuIcon,
   HomeIcon,
-} from "@heroicons/react/outline";
+} from '@heroicons/react/outline'
+import { useSession, signIn, signOut } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 function Header() {
+  const { data: session } = useSession()
+  const router = useRouter()
+
   return (
     <div className="shadow-sm border-b bg-white sticky top-0 z-50">
       <div className="flex justify-between bg-white max-w-6xl mx-5 xl:mx-auto cursor-pointer lg:mt-3 mt-6">
         {/* Left */}
-        <div className="relative hidden lg:inline-grid h-24 w-24">
+        <div
+          className="relative hidden lg:inline-grid h-24 w-24"
+          onClick={() => router.push('/')}
+        >
           <Image
             src="https://links.papareact.com/ocw"
             layout="fill"
@@ -22,7 +30,10 @@ function Header() {
           />
         </div>
 
-        <div className="relative w-10 h-10 lg:hidden flex-shrink-0 cursor-pointer">
+        <div
+          className="relative w-10 h-10 lg:hidden flex-shrink-0 cursor-pointer"
+          onClick={() => router.push('/')}
+        >
           <Image
             src="https://links.papareact.com/jjm"
             layout="fill"
@@ -44,27 +55,38 @@ function Header() {
 
         {/* Right */}
         <div className="flex items-center justify-end space-x-4">
-          <HomeIcon className="h-10 w-10 text-black" />
-          <MenuIcon className="h-10 w-10 md:hidden cursor-pointer" />
-          <div className="relative navBtn">
-            <PaperAirplaneIcon className="navBtn rotate-45" />
-            <div className="absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-right">
-              3
-            </div>
-          </div>
-
-          <PlusCircleIcon className="navBtn" />
-          <UserGroupIcon className="navBtn" />
-          <HeartIcon className="navBtn" />
-          <img
-            src="https://video.fsgn5-3.fna.fbcdn.net/v/t1.6435-1/123584179_1449709761900168_1445279572392526145_n.jpg?stp=dst-jpg_p160x160&_nc_cat=104&ccb=1-7&_nc_sid=7206a8&_nc_ohc=RndPmtniwwgAX-bJRLW&_nc_ht=video.fsgn5-3.fna&oh=00_AT-RkfUAgk4Yuzgl5cgWb3YPyvXAZ7_taEfjYJTDSpUtEw&oe=62D979AF"
-            alt="profile picture"
-            className="h-10 rounded-full cursor-pointer"
+          <HomeIcon
+            className="h-10 w-10 text-black"
+            onClick={() => router.push('/')}
           />
+          <MenuIcon className="h-10 w-10 md:hidden cursor-pointer" />
+
+          {session ? (
+            <>
+              <div className="relative navBtn">
+                <PaperAirplaneIcon className="navBtn rotate-45" />
+                <div className="absolute -top-1 -right-2 text-xs w-5 h-5 bg-red-500 rounded-full flex items-center justify-center animate-pulse text-right">
+                  3
+                </div>
+              </div>
+
+              <PlusCircleIcon className="navBtn" />
+              <UserGroupIcon className="navBtn" />
+              <HeartIcon className="navBtn" />
+              <img
+                src={session.user.image}
+                alt="profile picture"
+                className="h-10 w-10 rounded-full cursor-pointer"
+                onClick={signOut}
+              />
+            </>
+          ) : (
+            <button onClick={signIn}>Đăng nhập</button>
+          )}
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header
