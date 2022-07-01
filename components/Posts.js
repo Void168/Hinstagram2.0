@@ -16,20 +16,20 @@ function Posts() {
       ),
     [db],
     )
-    console.log(posts)
 
   return (
     <div>
       {posts.map((post) => {
-          <Post
-          id={post.id}
+        <Post
           key={post.id}
+          id={post.id}
           username={post.data().username}
-          userImg={post.data().profileImg}
-          img={post.data().image}
-          caption={post.data().caption}
+          // userImg={post.data().profileImg}
+          // image={post.data().image}
+          // caption={post.data().caption}
         />
       })}
+      <Post />
     </div>
   )
 }

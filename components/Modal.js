@@ -37,7 +37,6 @@ function Modal() {
       profileImg: session.user.image,
       timestamp: serverTimestamp(),
     })
-    console.log('New doc added with ID', docRef.id)
 
     const imageRef = ref(storage, `posts/${docRef.id}/image`)
 
